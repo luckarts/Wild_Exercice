@@ -30,14 +30,12 @@ migration.connection
 
 app.use('/api/students', Students);
 
-app.get('/*/*', function(req, res) {
-  res.redirect('/notFound');
-});
-
 app.use(express.static(path.join(__dirname + '/../build')));
 
 app.use('*', (req, res) => {
   res.sendFile(path.join(__dirname + '/../build/index.html'));
 });
-
+app.get('/*/*', function(req, res) {
+  res.redirect('/notFound');
+});
 export default app;

@@ -4,7 +4,7 @@ import postData from 'utils/postData';
 import { Typography, StudentsForm, Loader } from 'components/shared';
 import Message from '../../shared/Message';
 import api from 'API/api';
-
+import { useForm } from 'react-hook-form';
 const Home = () => {
   const initialState = {
     username: ''
@@ -12,7 +12,9 @@ const Home = () => {
   const [values, setSubmitValues] = useState(null);
   const [message, setMessage] = useState(null);
   const [bool, setIsSubmit] = useState(false);
-  const onSubmit = values => {
+  const { reset } = useForm();
+
+  const onSubmit = async values => {
     setIsSubmit(true);
     setSubmitValues(values);
   };
@@ -23,7 +25,12 @@ const Home = () => {
   return (
     <div className="">
       {newStudent.data.message && <Message message={newStudent.data.message} />}
-      <StudentsForm initialState={initialState} onSubmit={onSubmit} errorServer={newStudent.error === null && {}} />
+      <StudentsForm
+        initialState={initialState}
+        onSubmit={onSubmit}
+        bool={bool}
+        errorServer={newStudent.error === null && {}}
+      />
 
       {loading ? (
         <div className={`my-40 text-center`}>
@@ -35,14 +42,18 @@ const Home = () => {
         </span>
       ) : (
         <div className="mt-12 sm:mt-8 mb-16 rounded-xlg  w-3/5 max-w-xlg sm:w-11/12 m-auto  p-8">
-          <Typography variante="h3">Membres de l'équipage</Typography>
-          {data &&
-            data.students &&
-            data.students.map((student, index) => (
-              <div className="md:w-1/2 sm:w-full " key={student.id}>
-                {student.username}
-              </div>
-            ))}
+          <Typography className="text-center mb-4" variante="h3">
+            Membres de l'équipage
+          </Typography>
+          <div className="flex flex-wrap">
+            {data &&
+              data.students &&
+              data.students.map((student, index) => (
+                <div className="w-1/3 sm:w-full text-center " key={student.id}>
+                  {student.username}
+                </div>
+              ))}
+          </div>
         </div>
       )}
     </div>

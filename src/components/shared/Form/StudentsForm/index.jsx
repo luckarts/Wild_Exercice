@@ -1,18 +1,27 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 
 import { Typography, Field, Button } from 'components/shared';
 
-const Form = ({ initialState, onSubmit, errorServer }) => {
+const Form = ({ initialState, bool, onSubmit, errorServer }) => {
   const required = {
     required: 'required',
     minLength: {
       value: 3,
       message: 'your username is too short'
+    },
+    pattern: {
+      value: /\S/,
+      message: 'Entered value does not match  format'
     }
   };
+  const { register, handleSubmit, reset, errors } = useForm();
+  useEffect(() => {
+    if (bool) {
+      reset();
+    }
+  }, [bool]);
 
-  const { register, handleSubmit, errors } = useForm();
   return (
     <>
       <form

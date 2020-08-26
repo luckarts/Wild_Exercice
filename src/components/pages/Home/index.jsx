@@ -14,11 +14,10 @@ const Home = () => {
   const [bool, setIsSubmit] = useState(false);
   const { reset } = useForm();
 
-  const onSubmit = async values => {
-    if (values) {
-      setIsSubmit(true);
-      setSubmitValues(values);
-    }
+  const onSubmit = async (values, e) => {
+    setIsSubmit(true);
+    setSubmitValues(values);
+    e.target.reset();
   };
 
   const newStudent = postData(api.students.newStudents, bool, values);

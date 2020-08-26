@@ -13514,6 +13514,8 @@ var Field = /*#__PURE__*/react_default.a.forwardRef(function (_ref, ref) {
     className: "leading-loose text-red-500"
   }, "This is required"), errors && errors.type === 'minLength' && /*#__PURE__*/react_default.a.createElement("span", {
     className: "leading-loose text-red-500"
+  }, errors.message), errors && errors.type === 'maxLength' && /*#__PURE__*/react_default.a.createElement("span", {
+    className: "leading-loose text-red-500"
   }, errors.message), errors && errors.type === 'pattern' && /*#__PURE__*/react_default.a.createElement("span", {
     className: "leading-loose text-red-500"
   }, errors.message));
@@ -15311,8 +15313,12 @@ var StudentsForm_Form = function Form(_ref) {
       value: 3,
       message: 'your username is too short'
     },
+    maxLength: {
+      value: 20,
+      message: 'your username is too short'
+    },
     pattern: {
-      value: /\S/,
+      value: /^[A-Za-z]+$/i,
       message: 'Entered value does not match  format'
     }
   };

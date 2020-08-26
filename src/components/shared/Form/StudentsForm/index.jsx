@@ -10,8 +10,12 @@ const Form = ({ initialState, bool, onSubmit, errorServer }) => {
       value: 3,
       message: 'your username is too short'
     },
+    maxLength: {
+      value: 20,
+      message: 'your username is too short'
+    },
     pattern: {
-      value: /\S/,
+      value: /^[A-Za-z]+$/i,
       message: 'Entered value does not match  format'
     }
   };

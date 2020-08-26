@@ -23,6 +23,7 @@ const Field = React.forwardRef(({ label, errors, name, type, defaultValue, autoC
       {error && errors && <span className="leading-loose text-red-500 "> & </span>}
       {errors && errors.type === 'required' && <span className="leading-loose text-red-500">This is required</span>}
       {errors && errors.type === 'minLength' && <span className="leading-loose text-red-500">{errors.message}</span>}
+      {errors && errors.type === 'maxLength' && <span className="leading-loose text-red-500">{errors.message}</span>}
       {errors && errors.type === 'pattern' && <span className="leading-loose text-red-500">{errors.message}</span>}
     </div>
   );

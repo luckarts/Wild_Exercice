@@ -8,7 +8,7 @@ export async function getAllStudents(req, res) {
 }
 export async function postStudent(req, res) {
   const { username } = req.body;
-  console.log(username);
+
   const student = await new_Student({ username });
   if (student) {
     return res.status(200).json({ message: `new student is add ${username}` });

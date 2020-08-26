@@ -9,12 +9,12 @@ const Home = () => {
   const initialState = {
     username: ''
   };
-  const [values, setSubmitValues] = useState(null);
+  const [values, setSubmitValues] = useState({});
   const [message, setMessage] = useState(null);
   const [bool, setIsSubmit] = useState(false);
   const { reset } = useForm();
 
-  const onSubmit = async (values, e) => {
+  const onSubmit = (values, e) => {
     if (values && values !== null) {
       setIsSubmit(true);
       setSubmitValues(values);

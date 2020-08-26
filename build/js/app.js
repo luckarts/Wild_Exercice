@@ -15545,10 +15545,12 @@ var Home_Home = function Home() {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
-              setIsSubmit(true);
-              setSubmitValues(values);
+              if (values) {
+                setIsSubmit(true);
+                setSubmitValues(values);
+              }
 
-            case 2:
+            case 1:
             case "end":
               return _context.stop();
           }

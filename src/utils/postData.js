@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import history from '../routes/history';
 
 const usePost = (callback, bool, params) => {
   const [data, setData] = useState([]);
@@ -9,6 +8,7 @@ const usePost = (callback, bool, params) => {
     const postData = async function() {
       try {
         setLoading(true);
+        console.log('post');
         const response = await callback(params);
 
         if (response) {
@@ -23,7 +23,6 @@ const usePost = (callback, bool, params) => {
           setErrors(error);
         }
       } finally {
-        history.push('/');
         setLoading(false);
       }
     };

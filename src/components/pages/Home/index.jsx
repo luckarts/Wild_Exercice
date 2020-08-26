@@ -1,15 +1,52 @@
-import React from 'react';
-
-import PropTypes from 'prop-types';
-
-const propTypes = {
-  activeTab: PropTypes.func
-};
+import React, { useState } from 'react';
+import fetchData from 'utils/fetchData';
+import postData from 'utils/postData';
+import { Typography, StudentsForm, Loader } from 'components/shared';
+import Message from '../../shared/Message';
+import api from 'API/api';
 
 const Home = () => {
-  return <div className="">welcome</div>;
-};
+  const initialState = {
+    username: ''
+  };
+  const [values, setSubmitValues] = useState(null);
+  const [message, setMessage] = useState(null);
+  const [bool, setIsSubmit] = useState(false);
+  const onSubmit = values => {
+    setIsSubmit(true);
+    setSubmitValues(values);
+  };
 
-Home.propTypes = propTypes;
+  const newStudent = postData(api.students.newStudents, bool, values);
+  let { data, loading, error } = fetchData(api.students.getStudents, newStudent.data.message);
+
+  return (
+    <div className="">
+      {newStudent.data.message && <Message message={newStudent.data.message} />}
+      <StudentsForm initialState={initialState} onSubmit={onSubmit} errorServer={newStudent.error === null && {}} />
+
+      {loading ? (
+        <div className={`my-40 text-center`}>
+          <Loader bg="bg-primary " />
+        </div>
+      ) : error ? (
+        <span data-testid="error" className="text-red-800 text-center w-full">
+          {error}
+        </span>
+      ) : (
+        <div className="mt-12 sm:mt-8 mb-16 rounded-xlg  w-3/5 max-w-xlg sm:w-11/12 m-auto  p-8">
+          <Typography variante="h3">Membres de l'équipage</Typography>
+          {data &&
+            data.students &&
+            data.students.map((student, index) => (
+              <div className="md:w-1/2 sm:w-full " key={student.id}>
+                {student.username}
+              </div>
+            ))}
+        </div>
+      )}
+    </div>
+  );
+};
 
 export default Home;

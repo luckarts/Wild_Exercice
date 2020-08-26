@@ -13,6 +13,6 @@
       "utils/*": ["utils/*"]
     }
   },
-  "include": ["src", "public/lib-web-components"],
+
   "exclude": ["node_modules", "**/node_modules/*"]
 }

@@ -52,7 +52,6 @@
     "validate.js": "^0.13.1"
   },
   "scripts": {
-    "start:prod": "node scripts/startProd.js",
     "build:style": "postcss src/styles/index.css -o src/styles/tailwind.css ",
     "start:dev": "npm run build:style && react-scripts start",
     "build:front": "npm run build:style --production && webpack",

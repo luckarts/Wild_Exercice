@@ -15540,17 +15540,19 @@ var Home_Home = function Home() {
       reset = _useForm.reset;
 
   var onSubmit = /*#__PURE__*/function () {
-    var _ref = asyncToGenerator_default()( /*#__PURE__*/regenerator_default.a.mark(function _callee(values) {
+    var _ref = asyncToGenerator_default()( /*#__PURE__*/regenerator_default.a.mark(function _callee(values, e) {
       return regenerator_default.a.wrap(function _callee$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
-              if (values) {
+              if (values && values !== null) {
                 setIsSubmit(true);
                 setSubmitValues(values);
               }
 
-            case 1:
+              e.target.reset();
+
+            case 2:
             case "end":
               return _context.stop();
           }
@@ -15558,7 +15560,7 @@ var Home_Home = function Home() {
       }, _callee);
     }));
 
-    return function onSubmit(_x) {
+    return function onSubmit(_x, _x2) {
       return _ref.apply(this, arguments);
     };
   }();

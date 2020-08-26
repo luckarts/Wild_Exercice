@@ -15,8 +15,10 @@ const Home = () => {
   const { reset } = useForm();
 
   const onSubmit = async (values, e) => {
-    setIsSubmit(true);
-    setSubmitValues(values);
+    if (values && values !== null) {
+      setIsSubmit(true);
+      setSubmitValues(values);
+    }
     e.target.reset();
   };
 

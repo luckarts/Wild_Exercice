@@ -1,16 +1,28 @@
 
 # dependencies
 /node_modules
-/.pnp
 
-.pnp.js
+config
+/.pnp
 
 # testing
 /coverage
 
 # production
-/dist
-/build
+src
+public
+server
+.eslint
+.prettierrc
+.pnp.js
+.jestconfig.json
+.sequelizerc
+tailwind.config.js
+tailwindAnimations.js
+tailwindExtend
+webpack.config.js
+dockerfile
+
 # misc
 .DS_Store
 .env

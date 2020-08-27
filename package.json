@@ -56,11 +56,11 @@
     "build:style": "postcss src/styles/index.css -o src/styles/tailwind.css ",
     "start:dev": "npm run build:style && react-scripts start",
     "build:front": "npm run build:style --production && webpack",
-    "build": "npm run build:front && rm -rf dist && babel server -d dist --copy-files --ignore '**/*.test.js",
+    "build": "npm run build:front && rm -rf dist && babel server -d dist ",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "coverage": "npm run test -- --coverage",
-    "start": "npm run build && node dist/start.js",
+    "start": "node dist/start.js",
     "postcoverage": "opn coverage/lcov-report/index.html",
     "node:dev": "nodemon --exec babel-node ./server/start.js"
   },

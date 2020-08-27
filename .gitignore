@@ -2,16 +2,16 @@
 # dependencies
 /node_modules
 
-/config/jest
+config/
 /.pnp
 
 # testing
 /coverage
 
 # production
-/src
-/public
-/server
+src/
+public/
+server/
 .eslint
 .prettierrc
 .pnp.js

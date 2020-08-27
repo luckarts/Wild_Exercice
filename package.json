@@ -56,7 +56,7 @@
     "build:style": "postcss src/styles/index.css -o src/styles/tailwind.css ",
     "start:dev": "npm run build:style && react-scripts start",
     "build:front": "npm run build:style --production && webpack",
-    "build": "npm run build:front && rm -rf dist && babel server -d dist --copy-files --ignore '**/*.test.js",
+    "build": "npm run build:front && rm -rf dist && babel server -d dist",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "coverage": "npm run test -- --coverage",
